@@ -3,7 +3,7 @@ import Lesson from "../../db/models/lesson.model.js";
 import Coach from "../../db/models/coach.model.js";
 
 // Globals
-const maxInLesson = 3;
+const maxInLesson = 1;
 const simultaneousLessons = 1;
 
 // Get athletes from db
@@ -113,7 +113,7 @@ const populateLesson = (athlete, lesson, lesson_type) => {
   }
   lesson.attendies++;
   lesson.athletes.push(athlete);
-  lesson.athlete_names.push(athlete.first_name);
+  lesson.athlete_names.push(`${athlete.first_name} ${athlete.last_name}`);
   return lesson;
 };
 
@@ -125,7 +125,6 @@ const createTimeTable = async (req, res) => {
   //
   // pool data from DB and create empty time slots for lessons (max= num of athletes)
   const athleteArray = await getAllAthletes();
-  console.log("athleteArray contains:", athleteArray.length);
   if (athleteArray.length === 0) {
     return res.status(400).json("Athlete list is empty");
   }
@@ -133,14 +132,12 @@ const createTimeTable = async (req, res) => {
   if (athleteArray.length === 0) {
     return res.status(400).json("Coach list is empty");
   }
-  console.log("coachArray contains:", coachArray.length);
   const lessonArray = [createLesson()];
-  console.log("lessonArray contains:", lessonArray.length);
+
   // iterate over the athletes that preffers groups first
   for (const athlete of athleteArray) {
     if (athlete.pref.match(/(None)|(Group)|(Group only)/gi)) {
       athlete.solved = false;
-      //console.log('loop for-', athlete.first_name, athlete.pref);
       for (let lesson of lessonArray) {
         if (
           lesson.attendies < maxInLesson &&
@@ -167,8 +164,6 @@ const createTimeTable = async (req, res) => {
   for (const athlete of athleteArray) {
     if (athlete.pref.match(/(Private)|(Private only)/gi)) {
       athlete.solved = false;
-      console.log("lessonArray contains:", lessonArray.length);
-      console.log("loop for-", athlete.first_name, athlete.pref);
       for (let lesson of lessonArray) {
         if (!lesson.attendies) {
           // lesson uppdates
