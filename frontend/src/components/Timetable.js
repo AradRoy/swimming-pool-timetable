@@ -47,8 +47,8 @@ function Timetable(props) {
         <IntegratedEditing />
         <WeekView
           excludedDays={[5, 6]}
-          startDayHour={11}
-          endDayHour={24}
+          startDayHour={7}
+          endDayHour={21}
           cellDuration={60}
         />
         <Appointments />
