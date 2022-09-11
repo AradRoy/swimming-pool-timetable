@@ -14,7 +14,7 @@ import LessonsList from "../components/LessonsList";
 
 const TimetablePage = () => {
   const [lessons, setLessons] = useState();
-  const [athletes, setAthletes] = useState([]);
+  const [unsolvedAthletes, setUnsolvedAthletes] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
   const [num, setNum] = useState(1);
@@ -26,22 +26,12 @@ const TimetablePage = () => {
       console.log("good", res.data.lessons);
       setLoaded(true);
       setLessons(res.data.lessons);
+      setUnsolvedAthletes(res.data.unsolvedAthletes);
+      console.log(unsolvedAthletes);
     } catch (error) {
       console.log(error.message, error.response.data);
       setLoaded(true);
       setError(error.response.data);
-    }
-  };
-  // GET athletes
-  const getAthletes = async () => {
-    try {
-      const res = await axios(`http://localhost:5000/api/athletes`);
-      console.log(
-        `${res.statusText} status:${res.status} - Got ${res.data.athlete.length} elements from DB`
-      );
-      setAthletes(res.data.athlete);
-    } catch (error) {
-      console.log(error.message, error.response);
     }
   };
   useEffect(() => {
@@ -52,6 +42,11 @@ const TimetablePage = () => {
       <div className="d-flex justify-content-center">
         <h1>Weekly Timetable</h1>
       </div>
+      {unsolvedAthletes.length > 0 && (
+        <Alert key="danger" variant="danger">
+          <Alert.Heading>{`There are ${unsolvedAthletes.length} athletes that could not get in a lesson`}</Alert.Heading>
+        </Alert>
+      )}
       {!loaded && (
         <Stack
           direction="horizontal"

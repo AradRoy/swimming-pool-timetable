@@ -48,8 +48,12 @@ const LessonSchema = new mongoose.Schema({
   },
 });
 
-LessonSchema.pre("save", function () {
-  this.title = `${this.style} with ${this.coach}`;
-});
+LessonSchema.pre(
+  "save",
+  function () {
+    this.title = `${this.style} with ${this.coach}`;
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model("Lesson", LessonSchema);
