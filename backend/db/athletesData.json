@@ -1,0 +1,142 @@
+[
+	{
+		"athleteID": 34599106,
+		"first_name": "Wylie",
+		"last_name": "Caldwell",
+		"style": "Butterfly",
+		"pred": "Private"
+	},
+	{
+		"athleteID": 309543483,
+		"first_name": "Sawyer",
+		"last_name": "Williamson",
+		"style": "Butterfly",
+		"pred": "Private"
+	},
+	{
+		"athleteID": 133714398,
+		"first_name": "Amanda",
+		"last_name": "Durham",
+		"style": "Freestyle",
+		"pred": "None"
+	},
+	{
+		"athleteID": 916197725,
+		"first_name": "Orla",
+		"last_name": "Fox",
+		"style": "Butterfly",
+		"pred": "None"
+	},
+	{
+		"athleteID": 716879136,
+		"first_name": "Veda",
+		"last_name": "Mccullough",
+		"style": "Breaststroke",
+		"pred": "Group"
+	},
+	{
+		"athleteID": 240686727,
+		"first_name": "Cade",
+		"last_name": "Callahan",
+		"style": "Butterfly",
+		"pred": "Group"
+	},
+	{
+		"athleteID": 334642515,
+		"first_name": "Daniel",
+		"last_name": "Hancock",
+		"style": "Butterfly",
+		"pred": "Private"
+	},
+	{
+		"athleteID": 684330525,
+		"first_name": "Peter",
+		"last_name": "Roach",
+		"style": "Backstroke",
+		"pred": "Private only"
+	},
+	{
+		"athleteID": 793494478,
+		"first_name": "Serina",
+		"last_name": "Moore",
+		"style": "Backstroke",
+		"pred": "Private"
+	},
+	{
+		"athleteID": 980894623,
+		"first_name": "Brenden",
+		"last_name": "Michael",
+		"style": "Breaststroke",
+		"pred": "Group"
+	},
+	{
+		"athleteID": 296073268,
+		"first_name": "William",
+		"last_name": "Frederick",
+		"style": "Breaststroke",
+		"pred": "Private only"
+	},
+	{
+		"athleteID": 268186214,
+		"first_name": "Tamekah",
+		"last_name": "Dennis",
+		"style": "Breaststroke",
+		"pred": "Group"
+	},
+	{
+		"athleteID": 581652121,
+		"first_name": "Kylie",
+		"last_name": "Watson",
+		"style": "Freestyle",
+		"pred": "Private only"
+	},
+	{
+		"athleteID": 334383543,
+		"first_name": "Mufutau",
+		"last_name": "Kaufman",
+		"style": "Backstroke",
+		"pred": "Group only"
+	},
+	{
+		"athleteID": 18761450,
+		"first_name": "Chancellor",
+		"last_name": "Rodriguez",
+		"style": "Breaststroke",
+		"pred": "Group only"
+	},
+	{
+		"athleteID": 832610370,
+		"first_name": "Basil",
+		"last_name": "Cote",
+		"style": "Butterfly",
+		"pred": "None"
+	},
+	{
+		"athleteID": 145162611,
+		"first_name": "Whilemina",
+		"last_name": "Tucker",
+		"style": "Breaststroke",
+		"pred": "Private only"
+	},
+	{
+		"athleteID": 397085615,
+		"first_name": "Candace",
+		"last_name": "Schmidt",
+		"style": "Freestyle",
+		"pred": "Group only"
+	},
+	{
+		"athleteID": 385786717,
+		"first_name": "Nina",
+		"last_name": "Benson",
+		"style": "Butterfly",
+		"pred": "Private only"
+	},
+	{
+		"athleteID": 483753540,
+		"first_name": "Ezra",
+		"last_name": "Holmes",
+		"style": "Breaststroke",
+		"pred": "None"
+	}
+]
