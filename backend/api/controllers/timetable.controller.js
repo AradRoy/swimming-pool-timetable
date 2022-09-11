@@ -1,9 +1,9 @@
-import Athlete from "../../db/models/athlete.model.js";
+import { Athlete } from "../../db/models/athlete.model.js";
 import Lesson from "../../db/models/lesson.model.js";
 import Coach from "../../db/models/coach.model.js";
 
 // Globals
-const maxInLesson = 2;
+const maxInLesson = 3;
 const simultaneousLessons = 1;
 
 // Get athletes from db
@@ -100,6 +100,7 @@ const createLesson = () => {
     duration: "",
     attendies: 0,
     athletes: [],
+    athlete_names: [],
   };
   return lesson;
 };
@@ -111,7 +112,8 @@ const populateLesson = (athlete, lesson, lesson_type) => {
     lesson.duration = lesson_type === "Group" ? 60 : 45;
   }
   lesson.attendies++;
-  lesson.athletes.push(athlete.first_name);
+  lesson.athletes.push(athlete);
+  lesson.athlete_names.push(athlete.first_name);
   return lesson;
 };
 

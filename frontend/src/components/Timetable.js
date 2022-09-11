@@ -26,18 +26,6 @@ function Timetable(props) {
       athletes: lesson.athlete_names,
     };
   });
-  const Appointment = ({ children, style, ...restOfProps }) => (
-    <Appointments.Appointment
-      {...restOfProps}
-      style={{
-        ...style,
-        backgroundColor: "#FFC187",
-        borderRadius: "8px",
-      }}
-    >
-      {children}
-    </Appointments.Appointment>
-  );
 
   const Content = ({ children, appointmentData, ...restProps }) => (
     <AppointmentTooltip.Content
@@ -45,11 +33,9 @@ function Timetable(props) {
       appointmentData={appointmentData}
     >
       <ListGroup>
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+        {appointmentData.athletes.map((name) => {
+          return <ListGroup.Item>{name}</ListGroup.Item>;
+        })}
       </ListGroup>
     </AppointmentTooltip.Content>
   );
@@ -65,8 +51,24 @@ function Timetable(props) {
           endDayHour={24}
           cellDuration={60}
         />
-        <Appointments appointmentComponent={Appointment} />
-
+        <Appointments />
+        <Resources
+          data={[
+            {
+              id: "coach",
+              fieldName: "coach",
+              title: "Coach",
+              instances: [
+                { id: "Yotam", text: "Coach Yotam", color: red[500] },
+                { id: "Yonni", text: "Coach Yonni", color: lightGreen[500] },
+                { id: "Johnny", text: "Coach Johnny", color: blue[500] },
+              ],
+              allowMultiple: false,
+              isMain: true,
+            },
+          ]}
+          mainResourceName="coach"
+        />
         <AppointmentTooltip contentComponent={Content} />
         <AppointmentForm readonly />
       </Scheduler>
