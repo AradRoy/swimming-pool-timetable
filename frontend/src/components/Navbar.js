@@ -1,19 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 
-
-
 import logo from '../logos/logo.png';
 import { links, social } from './Links';
-
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Stack from 'react-bootstrap/Stack';
-
-
-
 
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
