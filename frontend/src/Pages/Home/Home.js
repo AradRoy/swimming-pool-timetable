@@ -8,8 +8,9 @@ const Home = () => {
     return (
         <div className='home'>
             <div className='content'>
-                <h1>Find the perfect place</h1>
-                <p className='search-text'> Search the largest selection of luxury high-rise apartments, multi-family homes, and luxury homes. </p>
+
+                <h1>the perfect place</h1>
+                <p className='search-text'> To arrange swimming pool athletes and timetable </p>
 
             </div>
         </div>

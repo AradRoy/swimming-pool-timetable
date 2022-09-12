@@ -3,7 +3,7 @@ import Lesson from "../../db/models/lesson.model.js";
 import Coach from "../../db/models/coach.model.js";
 
 // Globals
-const maxInLesson = 10;
+const maxInLesson = 2;
 const simultaneousLessons = 1;
 
 // Get athletes from db
@@ -82,6 +82,7 @@ const updateCoaches = async (coachArray) => {
   }
 };
 const saveLessons = async (lessonArray) => {
+
   try {
     await Lesson.deleteMany();
     const lessons = await Lesson.create(lessonArray);
@@ -188,12 +189,9 @@ const createTimeTable = async (req, res) => {
         based on knapsack algoritim
     */
   let unsolvedAthletes = [];
-  const timeArray = [];
+  let solvedLessons = []
   for (const lesson of lessonArray) {
     lesson.solved = false;
-
-
-
     // find the best coach that can accommodate the current lesson
     let max = -1
     let index = 0
@@ -222,7 +220,7 @@ const createTimeTable = async (req, res) => {
         //update coach
         coach.remShift -= lesson.duration;
         coach.shift_start = lesson.end_time;
-        // time array
+        solvedLessons.push(lesson)
 
         break;
       }
@@ -234,13 +232,13 @@ const createTimeTable = async (req, res) => {
       }
     }
   }
-
+  console.log(unsolvedAthletes);
   res
     .status(200)
-    .json({ lessons: lessonArray, unsolvedAthletes: unsolvedAthletes });
+    .json({ lessons: solvedLessons, unsolvedAthletes: unsolvedAthletes });
   const athleteRes = await updateAthlete(athleteArray);
   const coachRes = await updateCoaches(coachArray);
-  const lessonRes = await saveLessons(lessonArray);
+  const lessonRes = await saveLessons(solvedLessons);
   //console.log(lessonArray);
 };
 

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 
-import logo from '../logos/logo.png';
+import logo from '../assets/logos/logo.png';
 import { links, social } from './Links';
 
 import Container from 'react-bootstrap/Container';
