@@ -4,7 +4,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 //Pages
-import Home from "./Pages/Home"
+import Home from "./Pages/Home/Home"
 import About from './Pages/About';
 import Error from './Pages/Error';
 import TimetablePage from "./Pages/TimetablePage"

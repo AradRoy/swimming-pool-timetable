@@ -1,0 +1,212 @@
+[
+	{
+		"athleteID": 473853536,
+		"first_name": "Sophia",
+		"last_name": "Manning",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 410798560,
+		"first_name": "Gretchen",
+		"last_name": "Weber",
+		"style": "Backstroke",
+		"pref": "None"
+	},
+	{
+		"athleteID": 196648224,
+		"first_name": "Samuel",
+		"last_name": "Velasquez",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 152279461,
+		"first_name": "Brenda",
+		"last_name": "Leach",
+		"style": "Breaststroke",
+		"pref": "None"
+	},
+	{
+		"athleteID": 142135265,
+		"first_name": "Risa",
+		"last_name": "Velasquez",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 98781866,
+		"first_name": "Drew",
+		"last_name": "Faulkner",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 597390781,
+		"first_name": "Hyacinth",
+		"last_name": "Levine",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 51162220,
+		"first_name": "Carolyn",
+		"last_name": "Jenkins",
+		"style": "Breaststroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 960889148,
+		"first_name": "Kasper",
+		"last_name": "Bryan",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 685466977,
+		"first_name": "Lillith",
+		"last_name": "Chandler",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 630938036,
+		"first_name": "Vivien",
+		"last_name": "Golden",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 91728337,
+		"first_name": "Jerome",
+		"last_name": "Dotson",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 640794845,
+		"first_name": "Zephr",
+		"last_name": "Dotson",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 566956803,
+		"first_name": "Georgia",
+		"last_name": "Wilcox",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 493376287,
+		"first_name": "Amir",
+		"last_name": "Poole",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 69871763,
+		"first_name": "Mira",
+		"last_name": "Russo",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 180882100,
+		"first_name": "Cassandra",
+		"last_name": "Vinson",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 940434575,
+		"first_name": "Kennedy",
+		"last_name": "Bush",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 876979019,
+		"first_name": "Branden",
+		"last_name": "Rose",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 550935314,
+		"first_name": "Ali",
+		"last_name": "Joyce",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 496270868,
+		"first_name": "Gil",
+		"last_name": "Carney",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 859938627,
+		"first_name": "Leonard",
+		"last_name": "Puckett",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 713867786,
+		"first_name": "Ronan",
+		"last_name": "Mendez",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 759868836,
+		"first_name": "Hedwig",
+		"last_name": "Williamson",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 921267377,
+		"first_name": "Germane",
+		"last_name": "Mcfarland",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 178867621,
+		"first_name": "Ignatius",
+		"last_name": "Wiley",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 863284761,
+		"first_name": "Melodie",
+		"last_name": "Dyer",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 910101358,
+		"first_name": "Hammett",
+		"last_name": "Sharpe",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 902567577,
+		"first_name": "Amelia",
+		"last_name": "Mckenzie",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 423107205,
+		"first_name": "Sophia",
+		"last_name": "Martin",
+		"style": "Freestyle",
+		"pref": "None"
+	}
+]

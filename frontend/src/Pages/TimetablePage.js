@@ -43,9 +43,19 @@ const TimetablePage = () => {
         <h1>Weekly Timetable</h1>
       </div>
       {unsolvedAthletes.length > 0 && (
-        <Alert key="danger" variant="danger">
-          <Alert.Heading>{`There are ${unsolvedAthletes.length} athletes that could not get in a lesson`}</Alert.Heading>
-        </Alert>
+        <Container>
+          <Alert key="danger" variant="danger">
+            <Alert.Heading>{`There are ${unsolvedAthletes.length} athletes that could not get in a lesson`}</Alert.Heading>
+            <ol>
+              {unsolvedAthletes.map((athlete) => {
+                const { first_name, last_name } = athlete
+                return (
+                  <li>{`${first_name} ${last_name}`}</li>
+                )
+              })}
+            </ol>
+          </Alert>
+        </Container>
       )}
       {!loaded && (
         <Stack

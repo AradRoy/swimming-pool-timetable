@@ -3,7 +3,7 @@ import Lesson from "../../db/models/lesson.model.js";
 import Coach from "../../db/models/coach.model.js";
 
 // Globals
-const maxInLesson = 1;
+const maxInLesson = 2;
 const simultaneousLessons = 1;
 
 // Get athletes from db
@@ -82,6 +82,7 @@ const updateCoaches = async (coachArray) => {
   }
 };
 const saveLessons = async (lessonArray) => {
+
   try {
     await Lesson.deleteMany();
     const lessons = await Lesson.create(lessonArray);
@@ -188,22 +189,30 @@ const createTimeTable = async (req, res) => {
         based on knapsack algoritim
     */
   let unsolvedAthletes = [];
+  let solvedLessons = []
   for (const lesson of lessonArray) {
     lesson.solved = false;
+    // find the best coach that can accommodate the current lesson
+    let max = -1
+    let index = 0
     for (const coach of coachArray) {
       if (coach.lessonsInShift < 1) {
         coach.remShift = (coach.shift_end - coach.shift_start) / 1000 / 60;
       }
+
+
       if (
-        coach.remShift >= lesson.duration &&
+        coach.remShift >= lesson.duration && coach.remShift - lesson.duration > max &&
         coach.style.includes(lesson.style)
-      ) {
+      ) /* {
+        index = coach._id
+        max = coach.remShift - lesson.duration
+      } */ {
         //update lesson
         lesson.coach = coach.first_name;
         lesson.title = `${lesson.lesson_type} ${lesson.style} with ${lesson.coach}`;
-        lesson.start_time = coach.shift_start;
-        lesson.end_time = new Date();
-        lesson.end_time.setTime(lesson.start_time);
+        lesson.start_time = new Date(coach.shift_start);
+        lesson.end_time = new Date(lesson.start_time);
         lesson.end_time.setTime(
           lesson.end_time.getTime() + lesson.duration * 60 * 1000
         );
@@ -211,17 +220,25 @@ const createTimeTable = async (req, res) => {
         //update coach
         coach.remShift -= lesson.duration;
         coach.shift_start = lesson.end_time;
+        solvedLessons.push(lesson)
+
         break;
       }
     }
-    // lesson .athlete .id => turn to unsolved
+    if (!lesson.solved) {
+      for (const athlete of lesson.athletes) {
+        athlete.solved = false;
+        unsolvedAthletes.push(athlete);
+      }
+    }
   }
+  console.log(unsolvedAthletes);
   res
     .status(200)
-    .json({ lessons: lessonArray, unsolvedAthletes: unsolvedAthletes });
+    .json({ lessons: solvedLessons, unsolvedAthletes: unsolvedAthletes });
   const athleteRes = await updateAthlete(athleteArray);
   const coachRes = await updateCoaches(coachArray);
-  const lessonRes = await saveLessons(lessonArray);
+  const lessonRes = await saveLessons(solvedLessons);
   //console.log(lessonArray);
 };
 

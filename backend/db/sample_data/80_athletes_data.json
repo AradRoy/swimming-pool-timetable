@@ -1,0 +1,562 @@
+[
+	{
+		"athleteID": 938953407,
+		"first_name": "Leroy",
+		"last_name": "Ellison",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 550144994,
+		"first_name": "Robert",
+		"last_name": "Hall",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 903805198,
+		"first_name": "Ivan",
+		"last_name": "Sexton",
+		"style": "Butterfly",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 860787939,
+		"first_name": "Leo",
+		"last_name": "Gilliam",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 148390281,
+		"first_name": "Shay",
+		"last_name": "Estrada",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 697674793,
+		"first_name": "Meredith",
+		"last_name": "Allen",
+		"style": "Butterfly",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 768802226,
+		"first_name": "Reagan",
+		"last_name": "Fitzpatrick",
+		"style": "Breaststroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 200610668,
+		"first_name": "Hammett",
+		"last_name": "Middleton",
+		"style": "Butterfly",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 273926659,
+		"first_name": "Imogene",
+		"last_name": "Strong",
+		"style": "Backstroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 549965731,
+		"first_name": "Finn",
+		"last_name": "Bryan",
+		"style": "Breaststroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 687644047,
+		"first_name": "Blake",
+		"last_name": "Dillon",
+		"style": "Backstroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 901449356,
+		"first_name": "Quentin",
+		"last_name": "Wolf",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 36280932,
+		"first_name": "Adrienne",
+		"last_name": "House",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 955379595,
+		"first_name": "Sara",
+		"last_name": "Cleveland",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 138569566,
+		"first_name": "May",
+		"last_name": "Gilbert",
+		"style": "Breaststroke",
+		"pref": "None"
+	},
+	{
+		"athleteID": 254091181,
+		"first_name": "Gemma",
+		"last_name": "Pearson",
+		"style": "Butterfly",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 68267930,
+		"first_name": "Addison",
+		"last_name": "Atkins",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 758561946,
+		"first_name": "Brenda",
+		"last_name": "Bird",
+		"style": "Breaststroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 511919030,
+		"first_name": "Vaughan",
+		"last_name": "Shepherd",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 517528559,
+		"first_name": "Celeste",
+		"last_name": "Parks",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 941078491,
+		"first_name": "Marah",
+		"last_name": "Mclean",
+		"style": "Freestyle",
+		"pref": "None"
+	},
+	{
+		"athleteID": 46475159,
+		"first_name": "Cassady",
+		"last_name": "Bates",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 601745939,
+		"first_name": "Malik",
+		"last_name": "Green",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 421122933,
+		"first_name": "Austin",
+		"last_name": "Wiley",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 544106116,
+		"first_name": "Aurora",
+		"last_name": "Sargent",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 895329133,
+		"first_name": "Dalton",
+		"last_name": "Mcleod",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 415630536,
+		"first_name": "Karleigh",
+		"last_name": "Branch",
+		"style": "Breaststroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 254520030,
+		"first_name": "Kevyn",
+		"last_name": "Hawkins",
+		"style": "Backstroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 901533849,
+		"first_name": "Ulysses",
+		"last_name": "Hernandez",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 678082422,
+		"first_name": "Griffin",
+		"last_name": "Alexander",
+		"style": "Butterfly",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 357142636,
+		"first_name": "Victor",
+		"last_name": "Hahn",
+		"style": "Butterfly",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 891162545,
+		"first_name": "Skyler",
+		"last_name": "Carroll",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 85386631,
+		"first_name": "Basil",
+		"last_name": "Gamble",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 360312883,
+		"first_name": "Prescott",
+		"last_name": "Roman",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 640142780,
+		"first_name": "Macy",
+		"last_name": "Stout",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 837796005,
+		"first_name": "Carson",
+		"last_name": "Potts",
+		"style": "Breaststroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 509936182,
+		"first_name": "Zeph",
+		"last_name": "Shields",
+		"style": "Butterfly",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 448658843,
+		"first_name": "Darryl",
+		"last_name": "Monroe",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 671748309,
+		"first_name": "Burton",
+		"last_name": "Fowler",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 934898906,
+		"first_name": "Sarah",
+		"last_name": "Allen",
+		"style": "Breaststroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 816986670,
+		"first_name": "Margaret",
+		"last_name": "Robles",
+		"style": "Backstroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 881352457,
+		"first_name": "Mufutau",
+		"last_name": "Schneider",
+		"style": "Butterfly",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 409261421,
+		"first_name": "Halla",
+		"last_name": "Heath",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 414664437,
+		"first_name": "Fulton",
+		"last_name": "Morrison",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 207500626,
+		"first_name": "Keane",
+		"last_name": "Francis",
+		"style": "Butterfly",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 678415644,
+		"first_name": "Britanni",
+		"last_name": "Tanner",
+		"style": "Butterfly",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 913492622,
+		"first_name": "Latifah",
+		"last_name": "Ellison",
+		"style": "Breaststroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 357672537,
+		"first_name": "Lynn",
+		"last_name": "Sweeney",
+		"style": "Butterfly",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 836319400,
+		"first_name": "Kay",
+		"last_name": "Sparks",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 721179797,
+		"first_name": "MacKenzie",
+		"last_name": "Mathis",
+		"style": "Butterfly",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 473853536,
+		"first_name": "Sophia",
+		"last_name": "Manning",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 410798560,
+		"first_name": "Gretchen",
+		"last_name": "Weber",
+		"style": "Backstroke",
+		"pref": "None"
+	},
+	{
+		"athleteID": 196648224,
+		"first_name": "Samuel",
+		"last_name": "Velasquez",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 152279461,
+		"first_name": "Brenda",
+		"last_name": "Leach",
+		"style": "Breaststroke",
+		"pref": "None"
+	},
+	{
+		"athleteID": 142135265,
+		"first_name": "Risa",
+		"last_name": "Velasquez",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 98781866,
+		"first_name": "Drew",
+		"last_name": "Faulkner",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 597390781,
+		"first_name": "Hyacinth",
+		"last_name": "Levine",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 51162220,
+		"first_name": "Carolyn",
+		"last_name": "Jenkins",
+		"style": "Breaststroke",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 960889148,
+		"first_name": "Kasper",
+		"last_name": "Bryan",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 685466977,
+		"first_name": "Lillith",
+		"last_name": "Chandler",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 630938036,
+		"first_name": "Vivien",
+		"last_name": "Golden",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 91728337,
+		"first_name": "Jerome",
+		"last_name": "Dotson",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 640794845,
+		"first_name": "Zephr",
+		"last_name": "Dotson",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 566956803,
+		"first_name": "Georgia",
+		"last_name": "Wilcox",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 493376287,
+		"first_name": "Amir",
+		"last_name": "Poole",
+		"style": "Backstroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 69871763,
+		"first_name": "Mira",
+		"last_name": "Russo",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 180882100,
+		"first_name": "Cassandra",
+		"last_name": "Vinson",
+		"style": "Freestyle",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 940434575,
+		"first_name": "Kennedy",
+		"last_name": "Bush",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 876979019,
+		"first_name": "Branden",
+		"last_name": "Rose",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 550935314,
+		"first_name": "Ali",
+		"last_name": "Joyce",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 496270868,
+		"first_name": "Gil",
+		"last_name": "Carney",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 859938627,
+		"first_name": "Leonard",
+		"last_name": "Puckett",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 713867786,
+		"first_name": "Ronan",
+		"last_name": "Mendez",
+		"style": "Freestyle",
+		"pref": "Group only"
+	},
+	{
+		"athleteID": 759868836,
+		"first_name": "Hedwig",
+		"last_name": "Williamson",
+		"style": "Breaststroke",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 921267377,
+		"first_name": "Germane",
+		"last_name": "Mcfarland",
+		"style": "Breaststroke",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 178867621,
+		"first_name": "Ignatius",
+		"last_name": "Wiley",
+		"style": "Freestyle",
+		"pref": "Group"
+	},
+	{
+		"athleteID": 863284761,
+		"first_name": "Melodie",
+		"last_name": "Dyer",
+		"style": "Freestyle",
+		"pref": "Private"
+	},
+	{
+		"athleteID": 910101358,
+		"first_name": "Hammett",
+		"last_name": "Sharpe",
+		"style": "Backstroke",
+		"pref": "Private only"
+	},
+	{
+		"athleteID": 902567577,
+		"first_name": "Amelia",
+		"last_name": "Mckenzie",
+		"style": "Butterfly",
+		"pref": "None"
+	},
+	{
+		"athleteID": 423107205,
+		"first_name": "Sophia",
+		"last_name": "Martin",
+		"style": "Freestyle",
+		"pref": "None"
+	}
+]
