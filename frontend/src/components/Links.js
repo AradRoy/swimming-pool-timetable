@@ -14,11 +14,11 @@ export const links = [
         url: '/athletes',
         text: 'Athletes',
     },
-    {
+    /* {
         id: 3,
         url: '/coaches',
         text: 'Coaches',
-    },
+    }, */
     {
         id: 4,
         url: '/timetable',
