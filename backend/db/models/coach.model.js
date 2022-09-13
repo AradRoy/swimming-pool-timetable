@@ -31,14 +31,22 @@ const CoachSchema = new mongoose.Schema(
     lessonsInShift: {
       type: [Number],
     },
+    day: {
+      type: Number,
+    },
+    startTime: {
+      type: Number,
+    },
+    endTime: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );
 
 CoachSchema.virtual("shift_name").get(function () {
-  let name = `${this.first_name} ${
-    this.shift_start.toString().split(" ")[0]
-  } ${this.shift_start.getHours()}-${this.shift_end.getHours()}`;
+  let name = `${this.first_name} ${this.shift_start.toString().split(" ")[0]
+    } ${this.shift_start.getHours()}-${this.shift_end.getHours()}`;
   return name;
 });
 

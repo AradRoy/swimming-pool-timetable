@@ -151,7 +151,7 @@ const compareAthletes = (a, b) => {
   // keep the same
   return 0
 }
-const findCoachTime = (lesson, coachArray, unsolvedAthletes, solvedLessons) => {
+const findCoachTime = (lesson, coachArray, unsolvedAthletes, solvedLessons, timeSlots) => {
 
   // find the best coach that can accommodate the current lesson
   let max = -1
@@ -160,8 +160,11 @@ const findCoachTime = (lesson, coachArray, unsolvedAthletes, solvedLessons) => {
       coach.remShift = (coach.shift_end - coach.shift_start) / 1000 / 60;
     }
     if (
-      coach.remShift >= lesson.duration && coach.remShift - lesson.duration > max &&
-      coach.style.includes(lesson.style)
+      coach.remShift >= lesson.duration &&
+      coach.remShift - lesson.duration > max &&
+      coach.style.includes(lesson.style) &&
+      (timeSlots[coach.day] == 0 ||
+        timeSlots[coach.day][timeSlots[coach.day].length - 1][1].getTime() <= coach.shift_start.getTime())
     ) {
       // update lesson
       lesson.coach = coach.first_name;
@@ -176,6 +179,10 @@ const findCoachTime = (lesson, coachArray, unsolvedAthletes, solvedLessons) => {
       // update coach
       coach.remShift -= lesson.duration;
       coach.shift_start = lesson.end_time;
+      // update time slots
+      const s = new Date(lesson.start_time)
+      const e = new Date(lesson.end_time)
+      timeSlots[coach.day].push([s, e])
       break;
     }
   }
@@ -215,7 +222,20 @@ const createTimeTable = async (req, res) => {
   // initializations
   const lessonArray = [];
   let unsolvedAthletes = [];
-  let solvedLessons = []
+  let solvedLessons = [];
+  const timeSlots = [[], [], [], [], []]
+  //console.table(timeSlots)
+  /* 
+  ┌─────────┬────┐
+  │ (index) │ 0  │
+  ├─────────┼────┤
+  │    0    │ [] │
+  │    1    │ [] │
+  │    2    │ [] │
+  │    3    │ [] │
+  │    4    │ [] │
+  └─────────┴────┘
+  */
 
   // Sort athletes
   athleteArray.sort(compareAthletes)
@@ -230,7 +250,7 @@ const createTimeTable = async (req, res) => {
         const last = lessonArray.push(populateLesson(athlete, lesson, "Private"));
         //athlete updates
         athlete.solved = true;
-        findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons)
+        findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons, timeSlots)
       } else {
         for (let lesson of lessonArray) {
           if (
@@ -247,7 +267,7 @@ const createTimeTable = async (req, res) => {
           let newLesson = createLesson();// lesson uppdates
           const last = lessonArray.push(populateLesson(athlete, newLesson, "Group"));
           athlete.solved = true;// athlete updates
-          findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons)
+          findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons, timeSlots)
         }
       }
     }
