@@ -4,7 +4,6 @@ import Coach from "../../db/models/coach.model.js";
 
 // Globals
 const maxInLesson = 2;
-const simultaneousLessons = 1;
 
 // Get athletes from db
 const getAllAthletes = async (jsonFilter) => {
@@ -15,7 +14,6 @@ const getAllAthletes = async (jsonFilter) => {
     console.log(error);
   }
 };
-
 // Get all coaches from db
 const getAllCoaches = async () => {
   try {
@@ -29,7 +27,6 @@ const getAllCoaches = async () => {
     console.log(error);
   }
 };
-
 const getAllLessons = async (req, res) => {
   try {
     const lessons = await Lesson.find({});
@@ -113,81 +110,110 @@ const populateLesson = (athlete, lesson, lesson_type) => {
     lesson.duration = lesson_type === "Group" ? 60 : 45;
   }
   lesson.attendies++;
-  lesson.athletes.push(athlete);
   lesson.athlete_names.push(`${athlete.first_name} ${athlete.last_name}`);
+  lesson.athletes.push(athlete);
+  //console.log('start', athlete.first_name, 'end');
   return lesson;
 };
 
+const compareAthletes = (a, b) => {
+
+  if (a.pref.match(/(None)|(Group)|(Group only)/gi) && b.pref.match(/(Private)|(Private only)/gi)) {
+    //a = group
+    //b = private -> a before b
+    return -1
+  }
+  if (a.pref.match(/(Private)|(Private only)/gi) && b.pref.match(/(None)|(Group)|(Group only)/gi)) {
+    //a = private
+    //b = group -> b before a
+    return 1
+  }
+  if (a.pref.match(/(Group only)/gi) && b.pref.match(/(None)|(Group)/gi)) {
+    //a = group only
+    //b = else -> a before b
+    return -1
+  }
+  if (a.pref.match(/(None)|(Group)/gi) && b.pref.match(/(Group only)/gi)) {
+    //a = else 
+    //b = group only-> b before a
+    return 1
+  }
+  if (a.pref.match(/(Group)/gi) && b.pref.match(/(None)/gi)) {
+    //a = group only
+    //b = else -> a before b
+    return -1
+  }
+  if (a.pref.match(/(None)/gi) && b.pref.match(/(Group)/gi)) {
+    //a = else 
+    //b = group only-> b before a
+    return 1
+  }
+  // keep the same
+  return 0
+}
+
+
 const createTimeTable = async (req, res) => {
   // level One //
-  /*  in this level all the athletes are devided in to arbitrary lessons
+  /*  in this level all the athletes are devided in to lessons
         accordint to swimming style and lesson type
     */
-  //
   // pool data from DB and create empty time slots for lessons (max= num of athletes)
-  const athleteArray = await getAllAthletes();
+  let athleteArray = await getAllAthletes();
+  //(athleteArray.length === 0) && (res.status(400).json("Athlete list is empty"))
   if (athleteArray.length === 0) {
     return res.status(400).json("Athlete list is empty");
   }
+  for (const athlete of athleteArray) {
+    athlete.solved = false
+  }
   const coachArray = await getAllCoaches();
-  if (athleteArray.length === 0) {
+  if (coachArray.length === 0) {
     return res.status(400).json("Coach list is empty");
   }
-  const lessonArray = [createLesson()];
+  const lessonArray = [];
+
+  // Sort athletes
+  athleteArray.sort(compareAthletes)
 
   // iterate over the athletes that preffers groups first
-  for (const athlete of athleteArray) {
-    if (athlete.pref.match(/(None)|(Group)|(Group only)/gi)) {
-      athlete.solved = false;
-      for (let lesson of lessonArray) {
-        if (
-          lesson.attendies < maxInLesson &&
-          athlete.style == lesson.style &&
-          lesson.lesson_type != "Private"
-        ) {
-          // lesson uppdates
-          lesson = populateLesson(athlete, lesson, "Group");
-          // athlete updates
-          athlete.solved = true;
-          break;
-        }
-      }
-      if (!athlete.solved) {
-        // lesson uppdates
-        let newLesson = createLesson();
-        lessonArray.push(populateLesson(athlete, newLesson, "Group"));
+  for (let i = 0; i < athleteArray.length; i++) {
+    const athlete = athleteArray[i];
+    if (athlete.solved === false) {
+      // IF private
+      if (athlete.pref.match(/(Private)|(Private only)/gi)) {
+        let lesson = createLesson()
+        lessonArray.push(populateLesson(athlete, lesson, "Private"));
         //athlete updates
         athlete.solved = true;
+      } else {
+        for (let lesson of lessonArray) {
+          if (
+            lesson.attendies < maxInLesson &&
+            athlete.style == lesson.style &&
+            lesson.lesson_type != "Private"
+          ) {
+            lesson = populateLesson(athlete, lesson, "Group");// lesson uppdates
+            athlete.solved = true;// athlete updates
+            break;
+          }
+        }
+        if (!athlete.solved) {
+          let newLesson = createLesson();// lesson uppdates
+          lessonArray.push(populateLesson(athlete, newLesson, "Group"));
+          athlete.solved = true;// athlete updates
+        }
       }
     }
   }
-  // iterate over the athletes that preffers private
-  for (const athlete of athleteArray) {
-    if (athlete.pref.match(/(Private)|(Private only)/gi)) {
-      athlete.solved = false;
-      for (let lesson of lessonArray) {
-        if (!lesson.attendies) {
-          // lesson uppdates
-          lesson = populateLesson(athlete, lesson, "Private");
-          // athlete updates
-          athlete.solved = true;
-          break;
-        }
-      }
-      if (!athlete.solved) {
-        // lesson uppdates
-        let newLesson = createLesson();
-        lessonArray.push(populateLesson(athlete, newLesson, "Private"));
-        //athlete updates
-        athlete.solved = true;
-      }
-    }
-  }
+
   // level Two //
   /* 
-        In this level of the algorithim each lesson is related to work shift of one coach
-        based on knapsack algoritim
-    */
+    In this level of the algorithim each lesson is related to work shift of one coach
+    based on greedy knapsack algoritim - next worst        
+  */
+  // sort lessons by value$ i.e by number of athletes decending
+  lessonArray.sort((a, b) => b.athletes.length - a.athletes.length)
   let unsolvedAthletes = [];
   let solvedLessons = []
   for (const lesson of lessonArray) {
@@ -199,16 +225,11 @@ const createTimeTable = async (req, res) => {
       if (coach.lessonsInShift < 1) {
         coach.remShift = (coach.shift_end - coach.shift_start) / 1000 / 60;
       }
-
-
       if (
         coach.remShift >= lesson.duration && coach.remShift - lesson.duration > max &&
         coach.style.includes(lesson.style)
-      ) /* {
-        index = coach._id
-        max = coach.remShift - lesson.duration
-      } */ {
-        //update lesson
+      ) {
+        // update lesson
         lesson.coach = coach.first_name;
         lesson.title = `${lesson.lesson_type} ${lesson.style} with ${lesson.coach}`;
         lesson.start_time = new Date(coach.shift_start);
@@ -218,7 +239,7 @@ const createTimeTable = async (req, res) => {
         );
         lesson.solved = true;
         solvedLessons.push(lesson)
-        //update coach
+        // update coach
         coach.remShift -= lesson.duration;
         coach.shift_start = lesson.end_time;
         break;
@@ -231,15 +252,15 @@ const createTimeTable = async (req, res) => {
       }
     }
   }
-  console.log(unsolvedAthletes);
+
   res
     .status(200)
     .json({ lessons: solvedLessons, unsolvedAthletes: unsolvedAthletes });
   const athleteRes = await updateAthlete(athleteArray);
   const coachRes = await updateCoaches(coachArray);
   const lessonRes = await saveLessons(solvedLessons);
-  //console.log(lessonArray);
+
 };
 
 export { getAllLessons, createTimeTable };
-//
+
