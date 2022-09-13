@@ -24,22 +24,22 @@ export const links = [
         url: '/timetable',
         text: 'Timetable',
     },
-    {
+    /* {
         id: 5,
         url: '/about',
         text: 'About',
-    },
+    }, */
 ];
 
 export const social = [
     {
         id: 1,
         url: 'https://github.com/AradRoy/swimming-pool-timetable',
-        icon: <FaGithub />,
+        icon: <FaGithub size={30} />,
     },
     {
         id: 2,
         url: 'https://www.linkedin.com/in/Roy-Arad/',
-        icon: <FaLinkedin />,
+        icon: <FaLinkedin size={30} />,
     }
 ];

@@ -13,7 +13,6 @@ import CoachesPage from "./Pages/CoachesPage"
 import MainLayout from "./Pages/MainLayout";
 
 // Components
-import NavBar from './components/Navbar';
 
 const App = () => {
   return (
@@ -23,9 +22,9 @@ const App = () => {
           <Route path='/' element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="athletes" element={<AthletePage />} />
-            <Route path="coaches" element={<CoachesPage />} />
+            {/* <Route path="coaches" element={<CoachesPage />} /> */}
             <Route path="timetable" element={<TimetablePage />} />
-            <Route path="about" element={<About />} />
+            {/* <Route path="about" element={<About />} /> */}
             <Route path='*' element={<Error />} />
           </Route>
         </Routes>

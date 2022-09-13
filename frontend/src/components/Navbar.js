@@ -4,10 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../assets/logos/logo.png';
 import { links, social } from './Links';
 
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Stack from 'react-bootstrap/Stack';
+import Container from 'react-bootstrap/esm/Container';
 
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
@@ -30,7 +30,8 @@ const NavBar = () => {
     return (
         <>
             <Navbar collapseOnSelect expand="md" className={scrolled ? 'scrolled' : ''}>
-                <LinkContainer to={links[0].url}>
+
+                <LinkContainer to={links[0].url} className='ms-3'>
                     <Navbar.Brand>
                         <img
                             alt=""
@@ -42,9 +43,10 @@ const NavBar = () => {
                     </Navbar.Brand>
                 </LinkContainer>
 
+
                 <Navbar.Toggle />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav activeKey={activeLink}>
+                    <Nav activeKey={activeLink} className='ms-auto'>
                         {links.map((link) => {
                             const { id, url, text } = link;
                             return (
@@ -66,7 +68,7 @@ const NavBar = () => {
                                 const { id, url, icon } = socialIcon;
                                 return (
                                     <Nav.Item key={id}>
-                                        <Nav.Link href={url}>{icon}</Nav.Link>
+                                        <Nav.Link href={url} >{icon}</Nav.Link>
                                     </Nav.Item>
                                 );
                             })}
