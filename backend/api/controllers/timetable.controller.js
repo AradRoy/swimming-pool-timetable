@@ -97,6 +97,7 @@ const createLesson = () => {
     end_time: "",
     duration: "",
     attendies: 0,
+    solved: false,
     athletes: [],
     athlete_names: [],
   };
@@ -115,7 +116,6 @@ const populateLesson = (athlete, lesson, lesson_type) => {
   //console.log('start', athlete.first_name, 'end');
   return lesson;
 };
-
 const compareAthletes = (a, b) => {
 
   if (a.pref.match(/(None)|(Group)|(Group only)/gi) && b.pref.match(/(Private)|(Private only)/gi)) {
@@ -151,13 +151,54 @@ const compareAthletes = (a, b) => {
   // keep the same
   return 0
 }
+const findCoachTime = (lesson, coachArray, unsolvedAthletes, solvedLessons) => {
 
+  // find the best coach that can accommodate the current lesson
+  let max = -1
+  for (const coach of coachArray) {
+    if (coach.lessonsInShift < 1) {
+      coach.remShift = (coach.shift_end - coach.shift_start) / 1000 / 60;
+    }
+    if (
+      coach.remShift >= lesson.duration && coach.remShift - lesson.duration > max &&
+      coach.style.includes(lesson.style)
+    ) {
+      // update lesson
+      lesson.coach = coach.first_name;
+      lesson.title = `${lesson.lesson_type} ${lesson.style} with ${lesson.coach}`;
+      lesson.start_time = new Date(coach.shift_start);
+      lesson.end_time = new Date(lesson.start_time);
+      lesson.end_time.setTime(
+        lesson.end_time.getTime() + lesson.duration * 60 * 1000
+      );
+      lesson.solved = true;
+      solvedLessons.push(lesson)
+      // update coach
+      coach.remShift -= lesson.duration;
+      coach.shift_start = lesson.end_time;
+      break;
+    }
+  }
+  if (!lesson.solved) {
+    for (const athlete of lesson.athletes) {
+      athlete.solved = false;
+      unsolvedAthletes.push(athlete);
+    }
+  }
+}
 
 const createTimeTable = async (req, res) => {
+  /*  
   // level One //
-  /*  in this level all the athletes are devided in to lessons
-        accordint to swimming style and lesson type
-    */
+    in this level all the athletes are devided in to lessons
+    accordint to swimming style and lesson type
+  // level Two // 
+    In this level of the algorithim each lesson is related to work shift of one coach
+    based on greedy knapsack algoritim - next worst        
+  */
+
+
+
   // pool data from DB and create empty time slots for lessons (max= num of athletes)
   let athleteArray = await getAllAthletes();
   //(athleteArray.length === 0) && (res.status(400).json("Athlete list is empty"))
@@ -171,21 +212,25 @@ const createTimeTable = async (req, res) => {
   if (coachArray.length === 0) {
     return res.status(400).json("Coach list is empty");
   }
+  // initializations
   const lessonArray = [];
+  let unsolvedAthletes = [];
+  let solvedLessons = []
 
   // Sort athletes
   athleteArray.sort(compareAthletes)
 
-  // iterate over the athletes that preffers groups first
+  // iterate over the athletes
   for (let i = 0; i < athleteArray.length; i++) {
     const athlete = athleteArray[i];
     if (athlete.solved === false) {
       // IF private
       if (athlete.pref.match(/(Private)|(Private only)/gi)) {
         let lesson = createLesson()
-        lessonArray.push(populateLesson(athlete, lesson, "Private"));
+        const last = lessonArray.push(populateLesson(athlete, lesson, "Private"));
         //athlete updates
         athlete.solved = true;
+        findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons)
       } else {
         for (let lesson of lessonArray) {
           if (
@@ -200,59 +245,16 @@ const createTimeTable = async (req, res) => {
         }
         if (!athlete.solved) {
           let newLesson = createLesson();// lesson uppdates
-          lessonArray.push(populateLesson(athlete, newLesson, "Group"));
+          const last = lessonArray.push(populateLesson(athlete, newLesson, "Group"));
           athlete.solved = true;// athlete updates
+          findCoachTime(lessonArray[last - 1], coachArray, unsolvedAthletes, solvedLessons)
         }
       }
     }
   }
 
-  // level Two //
-  /* 
-    In this level of the algorithim each lesson is related to work shift of one coach
-    based on greedy knapsack algoritim - next worst        
-  */
   // sort lessons by value$ i.e by number of athletes decending
-  lessonArray.sort((a, b) => b.athletes.length - a.athletes.length)
-  let unsolvedAthletes = [];
-  let solvedLessons = []
-  for (const lesson of lessonArray) {
-    lesson.solved = false;
-    // find the best coach that can accommodate the current lesson
-    let max = -1
-    let index = 0
-    for (const coach of coachArray) {
-      if (coach.lessonsInShift < 1) {
-        coach.remShift = (coach.shift_end - coach.shift_start) / 1000 / 60;
-      }
-      if (
-        coach.remShift >= lesson.duration && coach.remShift - lesson.duration > max &&
-        coach.style.includes(lesson.style)
-      ) {
-        // update lesson
-        lesson.coach = coach.first_name;
-        lesson.title = `${lesson.lesson_type} ${lesson.style} with ${lesson.coach}`;
-        lesson.start_time = new Date(coach.shift_start);
-        lesson.end_time = new Date(lesson.start_time);
-        lesson.end_time.setTime(
-          lesson.end_time.getTime() + lesson.duration * 60 * 1000
-        );
-        lesson.solved = true;
-        solvedLessons.push(lesson)
-        // update coach
-        coach.remShift -= lesson.duration;
-        coach.shift_start = lesson.end_time;
-        break;
-      }
-    }
-    if (!lesson.solved) {
-      for (const athlete of lesson.athletes) {
-        athlete.solved = false;
-        unsolvedAthletes.push(athlete);
-      }
-    }
-  }
-
+  //lessonArray.sort((a, b) => b.athletes.length - a.athletes.length)
   res
     .status(200)
     .json({ lessons: solvedLessons, unsolvedAthletes: unsolvedAthletes });
