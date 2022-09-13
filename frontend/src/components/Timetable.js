@@ -14,7 +14,7 @@ import {
   AppointmentTooltip,
   Resources,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { yellow, lightGreen, blue, amber, pink, red, green } from "@mui/material/colors";
+import { red, pink, purple, deepPurple, indigo, blue, lightBlue, brown, cyan, teal, green, lightGreen, lime, yellow, ember, orange, deepOrange } from "@mui/material/colors";
 
 function Timetable(props) {
   const lessondata = props.lessonArray.map((lesson) => {
@@ -59,9 +59,11 @@ function Timetable(props) {
               fieldName: "coach",
               title: "Coach",
               instances: [
-                { id: "Yotam", text: "Coach Yotam", color: red[300] },
-                { id: "Yonni", text: "Coach Yonni", color: green[500] },
-                { id: "Johnny", text: "Coach Johnny", color: blue[400] },
+                { id: '' },
+                { id: "Yotam", text: "Coach Yotam", color: deepPurple[300] },
+                { id: "Yonni", text: "Coach Yonni", color: brown[300] },
+                { id: "Johnny", text: "Coach Johnny", color: pink[300] },
+
               ],
               allowMultiple: false,
               isMain: true,
