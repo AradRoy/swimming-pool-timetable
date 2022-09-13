@@ -14,7 +14,7 @@ import {
   AppointmentTooltip,
   Resources,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { red, lightGreen, blue } from "@mui/material/colors";
+import { yellow, lightGreen, blue, amber, pink, red, green } from "@mui/material/colors";
 
 function Timetable(props) {
   const lessondata = props.lessonArray.map((lesson) => {
@@ -42,7 +42,7 @@ function Timetable(props) {
   return (
     <>
       <Scheduler locale="en-IL" data={lessondata} height={700}>
-        <ViewState currentDate="2022-09-03" />
+        <ViewState />
         <EditingState />
         <IntegratedEditing />
         <WeekView
@@ -59,9 +59,9 @@ function Timetable(props) {
               fieldName: "coach",
               title: "Coach",
               instances: [
-                { id: "Yotam", text: "Coach Yotam", color: red[500] },
-                { id: "Yonni", text: "Coach Yonni", color: lightGreen[500] },
-                { id: "Johnny", text: "Coach Johnny", color: blue[500] },
+                { id: "Yotam", text: "Coach Yotam", color: red[300] },
+                { id: "Yonni", text: "Coach Yonni", color: green[500] },
+                { id: "Johnny", text: "Coach Johnny", color: blue[400] },
               ],
               allowMultiple: false,
               isMain: true,
@@ -70,7 +70,6 @@ function Timetable(props) {
           mainResourceName="coach"
         />
         <AppointmentTooltip contentComponent={Content} />
-        <AppointmentForm readonly />
       </Scheduler>
     </>
   );

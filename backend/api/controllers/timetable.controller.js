@@ -217,11 +217,10 @@ const createTimeTable = async (req, res) => {
           lesson.end_time.getTime() + lesson.duration * 60 * 1000
         );
         lesson.solved = true;
+        solvedLessons.push(lesson)
         //update coach
         coach.remShift -= lesson.duration;
         coach.shift_start = lesson.end_time;
-        solvedLessons.push(lesson)
-
         break;
       }
     }
