@@ -61,7 +61,7 @@ function Timetable(props) {
               instances: [
                 { id: '' },
                 { id: "Yotam", text: "Coach Yotam", color: deepPurple[300] },
-                { id: "Yonni", text: "Coach Yonni", color: brown[300] },
+                { id: "Yonni", text: "Coach Yonni", color: blue[300] },
                 { id: "Johnny", text: "Coach Johnny", color: pink[300] },
 
               ],
