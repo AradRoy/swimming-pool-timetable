@@ -160,6 +160,7 @@ and presented. A card view tab is avalable if you prefer the look.
 - [ ] Add Coaches Page
 - [ ] Improve UI
 - [ ] About Page
+- [ ] Error Handling
 
 
 See the [open issues](https://github.com/AradRoy/swimming-pool-timetable/issues) for a full list of proposed features (and known issues).
@@ -230,44 +231,3 @@ Project Link: [https://github.com/AradRoy/swimming-pool-timetable](https://githu
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 
-
-
-
-
-
-ADDED CONSTRAINTS:
-max in lesson = 5
-
-CONSIDERATIONS
-    fewer times you hit the database, the better => nested loop is less expensive
-    memory is faster than network
-
-Yotam   all             mon thu         16-20
-Yoni    brest buterfly  tue wed thu     08-15
-Jonny   all             sun tue thu     10-19
-
-
-profit = least unsolves
-crowded = min avrage kids in lesson
-
-maximum profit aproach: profit -> crowded
-    runs:
-        fill all groups
-            create list of avalable lessons (one hour) = time slots
-            filter by pref none, group, grouponly
-            fill according to crowded - next kid in the most empty lesson
-                in the pol are only lessons with correct style
-        fill all private only
-            create list of avalable lessons (45 min) = time slots
-            filter private only
-                ill according to crowded - next kid in the most empty lesson
-                in the pol are only lessons with correct style
-        fill private perf else put in groups
-
-    evaluate model:
-*/
-
-todo:
-error handler
-validation
-algorithim optimization
